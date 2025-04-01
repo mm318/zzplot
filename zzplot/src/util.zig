@@ -1,5 +1,5 @@
 const std = @import("std");
-const zzplot = @import("zzplot");
+const zzplot = @import("zzplot.zig");
 
 const print = std.debug.print;
 

@@ -286,7 +286,7 @@ test {
     const d_min: f32 = 11123;
     const d_max: f32 = 13553;
 
-    var aes:Aes = undefined;
+    var aes: Aes = undefined;
     aes.m_target = 7;
     aes.only_loose = false;
 
@@ -301,10 +301,10 @@ test {
     const d_min: f32 = -123;
     const d_max: f32 = 553;
 
-    var aes:Aes = undefined;
+    var aes: Aes = undefined;
     aes.m_target = 7;
     aes.only_loose = false;
-    
+
     var ticks = Ticks.extended(d_min, d_max, aes);
 
     ticks.display();
@@ -318,10 +318,10 @@ test {
     const d_min: f32 = -1023;
     const d_max: f32 = 553;
 
-    var aes:Aes = undefined;
+    var aes: Aes = undefined;
     aes.m_target = 7;
     aes.only_loose = false;
-    
+
     var ticks = Ticks.extended(d_min, d_max, aes);
 
     ticks.display();
@@ -335,7 +335,7 @@ test {
     const d_min: f32 = -1023;
     const d_max: f32 = 553;
 
-    var aes:Aes = undefined;
+    var aes: Aes = undefined;
     aes.m_target = 7;
     aes.only_loose = true;
 
@@ -351,8 +351,8 @@ test {
 test {
     const d_min: f32 = 11123;
     const d_max: f32 = 13553;
-    
-    var aes:Aes = undefined;
+
+    var aes: Aes = undefined;
     aes.m_target = 7;
 
     const ticks = Ticks.wilkinson(d_min, d_max, aes);
@@ -365,8 +365,8 @@ test {
 test {
     const d_min: f32 = -123;
     const d_max: f32 = 553;
-    
-    var aes:Aes = undefined;
+
+    var aes: Aes = undefined;
     aes.m_target = 11;
 
     var ticks = Ticks.wilkinson(d_min, d_max, aes);
@@ -380,8 +380,8 @@ test {
 test {
     const d_min: f32 = -123;
     const d_max: f32 = 553;
-    
-    var aes:Aes = undefined;
+
+    var aes: Aes = undefined;
     aes.m_target = 3;
 
     var ticks = Ticks.wilkinson(d_min, d_max, aes);
@@ -396,7 +396,7 @@ test {
     const d_min: f32 = 723;
     const d_max: f32 = 1503;
 
-    var aes:Aes = undefined;
+    var aes: Aes = undefined;
     aes.m_target = 5;
 
     var ticks = Ticks.wilkinson(d_min, d_max, aes);

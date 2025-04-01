@@ -1,5 +1,8 @@
 # zzplot
-***zig*** package for data visualization/plotting (makes use of [nanovg-zig](https://github.com/fabioarnold/nanovg-zig), and *openGL*).  Package name is a befuddling fusion of **ggplot** (which this package really does not resemble) and a reference to **"that little ol' band from Texas"**.
+
+***zig*** package for data visualization/plotting (makes use of [nanovg-zig](https://github.com/fabioarnold/nanovg-zig), and *openGL*).
+Package name is a befuddling fusion of **ggplot** (which this package really does not resemble)
+and a reference to **"that little ol' band from Texas"**.
 
 ***Features***
 
@@ -37,6 +40,3 @@
 ![multiple_windows_2_of_2](https://github.com/BlueAlmost/zzplot/assets/100024520/eb7ab40b-27e0-4105-8864-e0f9283b09d4)
 
 ![sine_movie](https://github.com/BlueAlmost/zzplot/assets/100024520/a54071ca-569b-4854-aba0-9802c556ba33)
-
-
-

@@ -1,7 +1,6 @@
 const std = @import("std");
 const print = std.debug.print;
 
-pub const zzplot = @import("zzplot_import_name");
 pub const nanovg = @import("nanovg_import_name");
 
 pub const Figure = @import("Figure.zig").Figure;

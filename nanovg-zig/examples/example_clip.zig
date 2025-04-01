@@ -274,7 +274,7 @@ pub fn main() !void {
         cursor_shape.path(vg, 100);
         vg.restore();
         pathShapes(vg, @floatFromInt(win_width), @floatFromInt(win_height));
-        vg.strokeColor(nvg.rgbf(1,1,1));
+        vg.strokeColor(nvg.rgbf(1, 1, 1));
         vg.strokeWidth(2);
         vg.stroke();
 

@@ -1,10 +1,25 @@
 .{
-    .name = "example packaging a zzplot and nanovg into an app",
+    .name = .zzplot_examples,
     .version = "0.0.0",
+
     .dependencies = .{
         .zzplot_zon_name = .{
             .path = "../zzplot",
         },
     },
-    .paths = .{""},
+
+    .paths = .{
+        "barebones",
+        "layout_display",
+        "layout_display_unequal_borders",
+        "more_aesthetics",
+        "multiple_windows",
+        "one_window_multiplot",
+        "simple_labels",
+        "sine_movie",
+        "build.zig",
+        "build.zig.zon",
+    },
+
+    .fingerprint = 0x96e32b197d7522d0,
 }

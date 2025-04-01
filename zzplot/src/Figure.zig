@@ -1,7 +1,6 @@
 const std = @import("std");
 
-// const zzplot = @import("zzplot_import_name");
-const zzplot = @import("zzplot_import_name");
+const zzplot = @import("zzplot.zig");
 const nvg = @import("nanovg_import_name");
 
 const Color = zzplot.Color;
