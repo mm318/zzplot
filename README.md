@@ -5,21 +5,48 @@ Package name is a befuddling fusion of **ggplot** (which this package really doe
 and a reference to **"that little ol' band from Texas"**.
 
 ***Features***
+* <ins>lines plots</ins>, with/without markers
+* <ins>colors</ins>
+* <ins>titles, labels, annotations</ins>
+* <ins>smart tick marks</ins>
+* <ins>multiple plots per axes</ins>
+* <ins>multiple axes per window</ins>
+* <ins>multiple windows</ins>
+* <ins>ability to display framerate</ins> (providing feeback for code speed optimization)
 
-* <ins> lines plots </ins>, with/without markers
-* <ins> colors </ins>
-* <ins> titles, labels, annotations </ins>
-* <ins> smart tick marks </ins>
-* <ins> multiple plots per axes </ins>
-* <ins> multiple axes per window </ins>
-* <ins> multiple windows </ins>
-* <ins> ability to display framerate </ins>(providing feeback for code speed optimization)
+***To run examples:***
+* <ins>clone repository to local disk</ins>
+* <ins>cd examples</ins>
+* <ins>zig build</ins> creates handful of executables in the **bin** directory
+* <ins>zig build run</ins> will run all executables simultaneously
 
-***To run:***
-* <ins> clone repository to local disk </ins>
-* <ins> cd examples </ins>
-* <ins> zig build </ins> creates handful of executables in the **bin** directory
-* <ins> zig build run </ins> will run all executables simultaneously
+***To use library:***  
+Add the dependency in your `build.zig.zon` by running the following command:
+```
+zig fetch --save https://github.com/mm318/zzplot/archive/refs/heads/main.tar.gz
+```
+Then, in your `build.zig`:
+```
+const std = @import("std");
+
+pub fn build(b: *std.Build) !void {
+    const target = b.standardTargetOptions(.{});
+    const optimize = b.standardOptimizeOption(.{});
+
+    const zzplot_dep = b.dependency("zzplot",  .{
+        .target = target,
+        .optimize = optimize,
+    });
+
+    const your_exe = b.addExecutable(.{
+        .target = target,
+        .optimize = optimize,
+        // your other options...
+    });
+    your_exe.addImport("zzplot", zzplot_dep.module("zzplot"));
+    your_exe.addIncludePath(zzplot_dep.artifact("zzplot").getEmittedIncludeTree());
+}
+```
 
 ***Gallery of figures produced by files in examples directory:***
 
