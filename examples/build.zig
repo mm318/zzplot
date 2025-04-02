@@ -83,8 +83,6 @@ const Targ = struct {
         exe.addIncludePath(zzplot.artifact("test").getEmittedIncludeTree());
 
         exe.linkSystemLibrary("glfw");
-        exe.linkSystemLibrary("GL");
-        exe.linkSystemLibrary("X11");
 
         b.installArtifact(exe);
 

@@ -63,8 +63,8 @@ fn installDemo(
             },
             .linux => {
                 demo.linkSystemLibrary("glfw3");
-                demo.linkSystemLibrary("GL");
-                demo.linkSystemLibrary("X11");
+                demo.linkSystemLibrary("GL"); // is this actually necessary?
+                demo.linkSystemLibrary("X11"); // is this actually necessary?
             },
             else => {
                 std.log.warn("Unsupported target: {}", .{target});
