@@ -105,6 +105,7 @@ pub const Figure = struct {
         pxRatio = wid_fb / (aes.wid / scale);
 
         _ = c.glfwSetKeyCallback(window, keyCallback);
+        _ = c.glfwSetWindowCloseCallback(window, closeWindowCallback);
         c.glfwMakeContextCurrent(window);
 
         if (c.gladLoadGL() == 0) {
@@ -158,7 +159,7 @@ pub const Figure = struct {
         self.pxRatio = self.wid_fb / self.aes.wid;
     }
 
-    pub fn getFramebufferSize(window: ?*c.GLFWwindow, wid_fb: c_int, ht_fb: c_int) callconv(.C) void {
+    pub export fn getFramebufferSize(window: ?*c.GLFWwindow, wid_fb: c_int, ht_fb: c_int) void {
         _ = wid_fb;
         _ = ht_fb;
 
@@ -230,19 +231,28 @@ pub const Figure = struct {
         }
     }
 
-    fn keyCallback(window: ?*c.GLFWwindow, key: c_int, scancode: c_int, action: c_int, mods: c_int) callconv(.C) void {
-        const self: *Self = @ptrCast(@alignCast(c.glfwGetWindowUserPointer(window)));
-        myKeyCallback(self, key, scancode, action, mods);
+    export fn keyCallback(window: ?*c.GLFWwindow, key: c_int, scancode: c_int, action: c_int, mods: c_int) void {
+        const is_close = myKeyCallback(key, scancode, action, mods);
+        if (is_close) {
+            closeWindowCallback(window);
+        }
     }
 
-    fn myKeyCallback(self: *Self, key: c_int, scancode: c_int, action: c_int, mods: c_int) void {
+    fn myKeyCallback(key: c_int, scancode: c_int, action: c_int, mods: c_int) bool {
         _ = scancode;
         _ = mods;
 
         if (key == c.GLFW_KEY_ESCAPE and action == c.GLFW_PRESS) {
-            self.live = false;
-            c.glfwHideWindow(self.window);
+            return true;
         }
+
+        return false;
+    }
+
+    export fn closeWindowCallback(window: ?*c.GLFWwindow) void {
+        const self: *Self = @ptrCast(@alignCast(c.glfwGetWindowUserPointer(window)));
+        self.live = false;
+        c.glfwHideWindow(self.window);
     }
 
     pub fn setPos(self: *Self, x: i32, y: i32) void {
