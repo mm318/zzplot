@@ -79,18 +79,14 @@ const Targ = struct {
                 .optimize = optimize,
             }),
         });
-        exe.addCSourceFile(.{ .file = b.path("../nanovg-zig/lib/gl2/src/glad.c"), .flags = &.{} });
-
         exe.root_module.addImport("zzplot_import_name", zzplot.module("zzplot_build_name"));
-        exe.addIncludePath(.{ .cwd_relative = "../nanovg-zig/lib/gl2/include" });
+        exe.addIncludePath(zzplot.artifact("test").getEmittedIncludeTree());
 
         exe.linkSystemLibrary("glfw");
         exe.linkSystemLibrary("GL");
         exe.linkSystemLibrary("X11");
 
         b.installArtifact(exe);
-
-        b.getInstallStep().dependOn(&b.addInstallArtifact(exe, .{ .dest_dir = .{ .override = .{ .custom = "../bin" } } }).step);
 
         const run_cmd = b.addRunArtifact(exe);
         if (b.args) |args| {

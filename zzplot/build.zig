@@ -16,7 +16,8 @@ pub fn build(b: *std.Build) void {
         .link_libc = true,
     });
     zzplot.addImport("nanovg_import_name", nanovg_dep.module("nanovg"));
-    zzplot.addIncludePath(.{ .cwd_relative = "../nanovg-zig/lib/gl2/include" });
+    zzplot.addCSourceFile(.{ .file = nanovg_dep.path("lib/gl2/src/glad.c"), .flags = &.{} });
+    zzplot.addIncludePath(nanovg_dep.path("lib/gl2/include"));
 
     const zzplot_tests = b.addTest(.{
         .root_module = b.createModule(.{
@@ -25,6 +26,9 @@ pub fn build(b: *std.Build) void {
             .optimize = optimize,
         }),
     });
+    zzplot_tests.installHeadersDirectory(nanovg_dep.path("lib/gl2/include"), "", .{});
+    b.installArtifact(zzplot_tests);
+
     const run_zzplot_tests = b.addRunArtifact(zzplot_tests);
     const test_step = b.step("test", "Run module tests");
     test_step.dependOn(&run_zzplot_tests.step);
