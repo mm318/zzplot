@@ -47,7 +47,7 @@ pub fn main() !void {
         fig.begin();
 
         ax.draw();
-        plt.plot(t, x);
+        plt.plot(f32, t, x);
 
         fig.end();
     }

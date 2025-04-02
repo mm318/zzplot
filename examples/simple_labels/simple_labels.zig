@@ -55,7 +55,7 @@ pub fn main() !void {
         fig.begin();
 
         ax.draw();
-        plt.plot(t, x);
+        plt.plot(f32, t, x);
 
         ax.text(2, -5, .{
             .str = "+ text placement on axes in data coordinates (2,-5)",

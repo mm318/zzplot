@@ -42,7 +42,7 @@ pub const Plot = struct {
         return plt;
     }
 
-    pub fn plot(self: *Self, x: []f32, y: []f32) void {
+    pub fn plot(self: *Self, numtype: type, x: []const numtype, y: []const numtype) void {
         const x_min = self.axes.aes.xlim[0];
         const x_max = self.axes.aes.xlim[1];
         const x_range = x_max - x_min;
@@ -53,10 +53,10 @@ pub const Plot = struct {
 
         var i: usize = 0;
 
-        var x_normal: f32 = (x[i] - x_min) / x_range;
+        var x_normal: f32 = (@as(f32, @floatCast(x[i])) - x_min) / x_range;
         var x_tmp: f32 = self.axes.xpos_axes_fb + x_normal * self.axes.wid_axes_fb;
 
-        var y_normal: f32 = (y[i] - y_min) / y_range;
+        var y_normal: f32 = (@as(f32, @floatCast(y[i])) - y_min) / y_range;
         var y_tmp: f32 = self.axes.ypos_axes_fb - y_normal * self.axes.ht_axes_fb;
 
         // I would have thought "scissor" could be used with a negative height, just as "rect",
@@ -78,10 +78,10 @@ pub const Plot = struct {
             i += 1;
 
             while (i < x.len) : (i += 1) {
-                x_normal = (x[i] - x_min) / x_range;
+                x_normal = (@as(f32, @floatCast(x[i])) - x_min) / x_range;
                 x_tmp = self.axes.xpos_axes_fb + x_normal * self.axes.wid_axes_fb;
 
-                y_normal = (y[i] - y_min) / y_range;
+                y_normal = (@as(f32, @floatCast(y[i])) - y_min) / y_range;
                 y_tmp = self.axes.ypos_axes_fb - y_normal * self.axes.ht_axes_fb;
 
                 self.vg.lineTo(x_tmp, y_tmp);
@@ -100,10 +100,10 @@ pub const Plot = struct {
 
             i = 0;
             while (i < x.len) : (i += 1) {
-                x_normal = (x[i] - x_min) / x_range;
+                x_normal = (@as(f32, @floatCast(x[i])) - x_min) / x_range;
                 x_tmp = self.axes.xpos_axes_fb + x_normal * self.axes.wid_axes_fb;
 
-                y_normal = (y[i] - y_min) / y_range;
+                y_normal = (@as(f32, @floatCast(y[i])) - y_min) / y_range;
                 y_tmp = self.axes.ypos_axes_fb - y_normal * self.axes.ht_axes_fb;
 
                 self.vg.fontFace("symbols");

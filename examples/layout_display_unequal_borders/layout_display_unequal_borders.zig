@@ -122,7 +122,7 @@ pub fn main() !void {
         });
 
         ax.draw();
-        plt.plot(t, x);
+        plt.plot(f32, t, x);
 
         const ax_left = @as(f32, @floatFromInt(fig.aes.border_px_left.? + ax.aes.border_px_left.?)) / fig.aes.wid;
         const ax_bot = @as(f32, @floatFromInt(fig.aes.border_px_bot.? + ax.aes.border_px_bot.?)) / fig.aes.ht;

@@ -79,7 +79,7 @@ pub fn main() !void {
         osc.next();
         osc.next();
         osc.read(x);
-        plt.plot(t, x);
+        plt.plot(f32, t, x);
 
         fig.end();
     }

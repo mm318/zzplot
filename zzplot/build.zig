@@ -18,6 +18,7 @@ pub fn build(b: *std.Build) void {
     zzplot.addImport("nanovg_import_name", nanovg_dep.module("nanovg"));
     zzplot.addCSourceFile(.{ .file = nanovg_dep.path("lib/gl2/src/glad.c"), .flags = &.{} });
     zzplot.addIncludePath(nanovg_dep.path("lib/gl2/include"));
+    zzplot.linkSystemLibrary("glfw", .{});
 
     const zzplot_tests = b.addTest(.{
         .root_module = b.createModule(.{

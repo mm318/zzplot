@@ -91,12 +91,12 @@ pub fn main() !void {
         fig.begin();
 
         ax1.draw();
-        plt_u.plot(t, u);
-        plt_v.plot(t, v);
+        plt_u.plot(f32, t, u);
+        plt_v.plot(f32, t, v);
 
         ax2.draw();
-        plt_x.plot(t, x);
-        plt_y.plot(t, y);
+        plt_x.plot(f32, t, x);
+        plt_y.plot(f32, t, y);
 
         fig.end();
     }

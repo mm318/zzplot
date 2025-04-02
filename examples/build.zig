@@ -82,8 +82,6 @@ const Targ = struct {
         exe.root_module.addImport("zzplot_import_name", zzplot.module("zzplot_build_name"));
         exe.addIncludePath(zzplot.artifact("test").getEmittedIncludeTree());
 
-        exe.linkSystemLibrary("glfw");
-
         b.installArtifact(exe);
 
         const run_cmd = b.addRunArtifact(exe);
